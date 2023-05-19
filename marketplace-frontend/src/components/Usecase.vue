@@ -5,7 +5,7 @@
   <v-container class="text-center">
     <v-row justify="center">
       <v-col cols="12" sm="6" md="4">
-        <a href="path/to/your/download/file" download>
+        <a :href="downloadLink" download>
           <v-btn block rounded="lg" size="x-large">Download</v-btn>
         </a>
       </v-col>
@@ -34,15 +34,34 @@
     </v-container>
   </template>
 
+
 <script>
+import axios from 'axios';
+
 export default {
+  data() {
+    return {
+      downloadLink: 'http://127.0.0.1:8000/download/sample.txt', // Initial link
+    };
+  },
   methods: {
     triggerFileUpload() {
       this.$refs.fileInput.click();
     },
-    handleFileUpload(event) {
+    async handleFileUpload(event) {
       const file = event.target.files[0];
-      // TODO: handle the file upload to your server
+      const formData = new FormData();
+      formData.append('file', file);
+
+      // Replace 'http://127.0.0.1:8000' with your FastAPI server's address
+      const response = await axios.post('http://127.0.0.1:8000/upload/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      // Assuming the server returns a response in the form { filename: '...' }
+      this.downloadLink = `http://127.0.0.1:8000/download/${response.data.filename}`;
     },
   },
 };
