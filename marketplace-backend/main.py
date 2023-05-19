@@ -10,7 +10,7 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
-# Make sure to allow CORS for your Vue.js application
+# Allow CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=['*'],
@@ -19,12 +19,15 @@ app.add_middleware(
     allow_headers=['*'],
 )
 
+# Uploads file to marketplace-backend folder
 @app.post("/upload/")
 async def upload_file(file: UploadFile = File(...)):
     with open(file.filename, 'wb+') as f:
         f.write(await file.read())
     return {"filename": file.filename}
 
+
+# Downloads file from marketplace-backend folder
 @app.get("/download/{filename}")
 async def read_upload(filename: str):
     file_location = f"{filename}"
