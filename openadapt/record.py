@@ -22,6 +22,8 @@ from loguru import logger
 from pympler import tracker
 from pynput import keyboard, mouse
 from tqdm import tqdm
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 import fire
 import mss.tools
 import psutil
@@ -45,6 +47,7 @@ STOP_SEQUENCES = config.STOP_SEQUENCES
 
 stop_sequence_detected = False
 performance_snapshots = []
+observed_files = []
 tracker = tracker.SummaryTracker()
 tracemalloc.start()
 utils.configure_logging(logger, LOG_LEVEL)
@@ -802,6 +805,14 @@ def read_mouse_events(
     terminate_event.wait()
     mouse_listener.stop()
 
+whitelist = [".txt"]
+class MyHandler(FileSystemEventHandler):
+    def on_modified(self, event):
+        for ext in whitelist:
+            if event.src_path.endswith(ext):
+                print(f"File {event.src_path} has been modified.")
+                observed_files.append(event.src_path)
+
 
 @logger.catch
 @trace(logger)
@@ -814,6 +825,10 @@ def record(
         task_description: A text description of the task to be recorded.
     """
     logger.info(f"{task_description=}")
+
+    file_observer = Observer()
+    file_observer.schedule(MyHandler(), path='C:\\', recursive=True)
+    file_observer.start()
 
     recording = create_recording(task_description)
     recording_timestamp = recording.timestamp
@@ -955,6 +970,9 @@ def record(
     except KeyboardInterrupt:
         terminate_event.set()
 
+    file_observer.stop()
+    file_observer.join()
+
     collect_stats()
     log_memory_usage()
 
@@ -977,6 +995,7 @@ def record(
         mem_plotter.join()
         utils.plot_performance(recording_timestamp)
 
+    logger.info(f"{observed_files=}")
     logger.info(f"Saved {recording_timestamp=}")
 
 
