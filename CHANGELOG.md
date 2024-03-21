@@ -2,6 +2,135 @@
 
 
 
+## v0.16.2 (2024-03-08)
+
+### Documentation
+
+* docs(README): add image of system tray icon and client GUI app ([`985cc6e`](https://github.com/OpenAdaptAI/OpenAdapt/commit/985cc6e37b82932764802aa5b09ed1cfc35d583b))
+
+* docs(README): update System Overview diagram ([`edf2241`](https://github.com/OpenAdaptAI/OpenAdapt/commit/edf224147aa62092bfdf6d20a623faf5ce15d924))
+
+* docs(README): update System Overview diagram ([`1b12ffb`](https://github.com/OpenAdaptAI/OpenAdapt/commit/1b12ffbb06dcbdb28031c4b58c331696d09c64db))
+
+* docs(README): update System Overview diagram
+
+* Update README.md
+
+Update system overview diagram ([`15f2818`](https://github.com/OpenAdaptAI/OpenAdapt/commit/15f2818ac4bd91a5320cddafdcfbd6f8acaba413))
+
+* docs(README): add notable works-in-progress under contributing ([`e44aa1f`](https://github.com/OpenAdaptAI/OpenAdapt/commit/e44aa1fdcd5f46e983ea12dd9a3b575290cf0b21))
+
+* docs(README): update system overview image (#587)
+
+* Update README.md
+
+Update system overview image
+
+* Update README.md ([`91c3eab`](https://github.com/OpenAdaptAI/OpenAdapt/commit/91c3eabcf01cadd683b13d715a8be9a58e0a916f))
+
+* docs(README): document root directory requirement ([`a021c2b`](https://github.com/OpenAdaptAI/OpenAdapt/commit/a021c2b0e00276e03ab0f4b9771e6e80bf926781))
+
+* docs(README): poetry shell ([`dd9dc9f`](https://github.com/OpenAdaptAI/OpenAdapt/commit/dd9dc9f962788a0736299c732777c5a6311a86f6))
+
+### Fix
+
+* fix(app): use default logo for tray icon ([`21f229b`](https://github.com/OpenAdaptAI/OpenAdapt/commit/21f229b4eb198887be28f6da0de7bca8bd8eedb2))
+
+### Refactor
+
+* refactor(visualize): /visualize.py to /app; move deprecated/visualize.py to /
+
+* mv visualize.py -&gt; app.py; restore deprecated/visualize.py
+
+* remove deprecated
+
+* swallow AssertionError regarding timestamps
+
+* fix logo path
+
+---------
+
+Co-authored-by: Aaron &lt;57018940+0dm@users.noreply.github.com&gt; ([`9ed9ac3`](https://github.com/OpenAdaptAI/OpenAdapt/commit/9ed9ac3bcb46bd2485c0abe7398a9130218e2c17))
+
+
+## v0.16.1 (2024-02-29)
+
+### Documentation
+
+* docs(README): remove redundant text from image ([`76b55fd`](https://github.com/OpenAdaptAI/OpenAdapt/commit/76b55fdaf0a988eab396e0f58d3dbc17b301faff))
+
+### Fix
+
+* fix(video): add migration script ([`b769c4a`](https://github.com/OpenAdaptAI/OpenAdapt/commit/b769c4a19b520a109a84fa02f21e5d31596d4641))
+
+
+## v0.16.0 (2024-02-29)
+
+### Documentation
+
+* docs(README): document AudioInfo.words_with_timestamps ([`7759996`](https://github.com/OpenAdaptAI/OpenAdapt/commit/7759996623a5273ed32505de11322f0c204f42d5))
+
+* docs(README): add System Overview image ([`8b56a83`](https://github.com/OpenAdaptAI/OpenAdapt/commit/8b56a834cf10a6fb809f58c91954806ad17c8df2))
+
+* docs(README): early loom demo ([`729e0be`](https://github.com/OpenAdaptAI/OpenAdapt/commit/729e0be5c431de1c5cf8e255d15be852f55f2726))
+
+### Feature
+
+* feat: video
+
+* replace multiprocessing with pyav
+
+* add config.RECORD_WINDOW_DATA
+
+* video_write_q
+
+* fix get_timestamp; extract_frames_to_pil_images with pyav
+
+* add video.py; ActionEvent.original_timestamp
+
+* use global SCT in get_monitor_dims
+
+* fix tests
+
+* fix window._windows.get_active_window_state (missing type)
+
+* add tests/openadapt/test_video.py
+
+* flake8
+
+* black
+
+* poetry lock ([`20e08b8`](https://github.com/OpenAdaptAI/OpenAdapt/commit/20e08b8ac7d4f2c5f23d37839e7f9ef522427f90))
+
+### Unknown
+
+* Update README.md (#566) ([`c7f8af4`](https://github.com/OpenAdaptAI/OpenAdapt/commit/c7f8af48a23c791f042431af9fc0da2a7279d47a))
+
+* docs(README) ([`000db3c`](https://github.com/OpenAdaptAI/OpenAdapt/commit/000db3ce010ab51a6cc746143f86a3290a3a8255))
+
+* Update README.md (#558) ([`028f6e8`](https://github.com/OpenAdaptAI/OpenAdapt/commit/028f6e859d5a52df5a9d89ab7426fcb989922c46))
+
+* Update README.md (#557)
+
+* Update README.md
+
+Add links to Architecture and RFC
+
+* Update README.md
+
+* Update README.md ([`ad6de5b`](https://github.com/OpenAdaptAI/OpenAdapt/commit/ad6de5b67b5e1a78ab06004603154382f44e6884))
+
+* docs(README)
+
+* Update README.md
+
+Add contract positions
+
+* Update README.md
+
+Improve contracts section ([`275db79`](https://github.com/OpenAdaptAI/OpenAdapt/commit/275db79d4230cf726ec8e8876f4a3c1f8eb644f5))
+
+
 ## v0.15.1 (2023-12-12)
 
 ### Documentation
